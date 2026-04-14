@@ -7,6 +7,7 @@ import './Auth.css';
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import axios from "axios";
+
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -27,22 +28,20 @@ const Register = () => {
     dispatch(register(form));
   };
 
-  // ✅ GOOGLE REGISTER (FIXED)
+  //  GOOGLE REGISTER 
   const handleGoogleRegister = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
 
       const firebaseToken = await result.user.getIdToken();
 
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/google`,
-        {
-          token: firebaseToken
-        }
-      );
+      const res = await axios.post("/api/auth/google", {
+        token: firebaseToken
+      });
 
       localStorage.setItem("token", res.data.token);
 
+      // 🔥 VERY IMPORTANT
       await dispatch(loadUser());
 
       toast.success("Google signup successful 🎉");
