@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register, clearError, loadUser } from '../store/authSlice';
 import './Auth.css';
 
-import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../firebase";
-import axios from "axios";
+// import { signInWithPopup } from "firebase/auth";
+// import { auth, googleProvider } from "../firebase";
+// import axios from "axios";
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -28,30 +28,35 @@ const Register = () => {
   };
 
   //  GOOGLE REGISTER 
-  const handleGoogleRegister = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
+  // const handleGoogleRegister = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, googleProvider);
 
-      const firebaseToken = await result.user.getIdToken();
+  //     const firebaseToken = await result.user.getIdToken();
 
-      const res = await axios.post("/api/auth/google", {
-        token: firebaseToken
-      });
+  //     const res = await axios.post("/api/auth/google", {
+  //       token: firebaseToken
+  //     });
 
-      localStorage.setItem("token", res.data.token);
+  //     localStorage.setItem("token", res.data.token);
 
-      // 🔥 VERY IMPORTANT
-      await dispatch(loadUser());
+  //     // 🔥 VERY IMPORTANT
+  //     await dispatch(loadUser());
 
-      toast.success("Google signup successful 🎉");
+  //     toast.success("Google signup successful 🎉");
 
-      navigate("/");
+  //     navigate("/");
 
-    } catch (err) {
-      console.error("GOOGLE REGISTER ERROR:", err?.response?.data || err);
-      toast.error("Google signup failed");
-    }
-  };
+  //   } catch (err) {
+  //     console.error("GOOGLE REGISTER ERROR:", err?.response?.data || err);
+  //     toast.error("Google signup failed");
+  //   }
+  // };
+
+  const handleGoogleRegister = () => {
+  window.location.href =
+    "https://smartmart-backend-dzeh.onrender.com/api/auth/google";
+};
 
   return (
     <div className="auth-page">
