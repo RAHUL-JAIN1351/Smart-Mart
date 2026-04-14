@@ -1,0 +1,112 @@
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  align-items: start;
+}
+
+.profile-sidebar {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.profile-sidebar h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.tier-badge {
+  display: inline-block;
+  color: white;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.loyalty-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: left;
+}
+
+.loyalty-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.points {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s;
+}
+
+.tier-info {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.profile-section {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.profile-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

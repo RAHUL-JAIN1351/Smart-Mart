@@ -1,0 +1,21 @@
+Google OAuth (Open Authorization) 
+
+        Protocol that lets apps access user data securely without needing passwords.
+
+
+Front-End Root Folder
+
+1. npm install firebase
+2. under src/ create file firebase.js
+3. Get the config from Firebase → Firebase Console → Authentication → Add Sign-in Method
+4. Update Login.jsx => ADD GOOGLE LOGIN BUTTON => ADD handleGoogleLogin Function => ADD BUTTON BELOW FORM
+5. UPDATE REGISTER.jsx => Same as done in login.jsx
+
+
+Back-End Root Folder
+
+1. npm install google-auth-library
+2. UPDATE authController.js
+3. ADD GOOGLE LOGIN CONTROLLER
+4. UPDATE ROUTES
+5. 
