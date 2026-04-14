@@ -13,7 +13,7 @@ import rateLimit from 'express-rate-limit'
 const app = express();
 
 app.use(cors({
-  origin: "smart-mart-7h9lk7e8y-rahul-jain1351s-projects.vercel.app", // Vite default frontend
+  origin: "https://smart-mart-beta.vercel.app/",
   credentials: true
 }));
 
