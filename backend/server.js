@@ -15,7 +15,7 @@ const app = express();
 app.set('trust proxy', 1);
 
 app.use(cors({
-  origin: "https://smart-mart-beta.vercel.app/",
+  origin: "https://smart-mart-beta.vercel.app",
   credentials: true
 }));
 
