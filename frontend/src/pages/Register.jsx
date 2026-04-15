@@ -38,8 +38,11 @@ const Register = () => {
       // const res = await axios.post("/api/auth/google", {
       //   token: firebaseToken
       // });
-
+      
       const API_URL = import.meta.env.VITE_API_URL;
+
+      console.log("ENV:", import.meta.env);
+console.log("API_URL:", import.meta.env.VITE_API_URL);
 
 const res = await axios.post(`${API_URL}/auth/google`, {
   token: firebaseToken
