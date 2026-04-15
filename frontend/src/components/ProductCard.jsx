@@ -32,21 +32,37 @@ const isWishlisted = user?.wishlist?.some(item => {
   // sync with backend
   const handleWishlist = async (e) => {
   e.preventDefault();
-
-  console.log("USER:", user);
-  console.log("WISHLIST:", user?.wishlist);
-
   if (!user) return;
 
+  const currentWishlist = user.wishlist || [];
+
+  const isAlreadyWishlisted = currentWishlist.some(item => {
+    const id = typeof item === 'object' ? item._id : item;
+    return id?.toString() === product._id.toString();
+  });
+
+  // 🔥 1. OPTIMISTIC UPDATE (instant UI)
+  let updatedWishlist;
+
+  if (isAlreadyWishlisted) {
+    updatedWishlist = currentWishlist.filter(item => {
+      const id = typeof item === 'object' ? item._id : item;
+      return id?.toString() !== product._id.toString();
+    });
+  } else {
+    updatedWishlist = [...currentWishlist, product];
+  }
+
+  dispatch(updateWishlist(updatedWishlist));
+
   try {
-    const res = await authApi.toggleWishlist(product._id);
-
-    console.log("API:", res.data); // debug
-
-    // FORCE update
-    dispatch(updateWishlist([...res.data.wishlist]));
+    // 🔥 2. BACKEND SYNC
+    await authApi.toggleWishlist(product._id);
   } catch (err) {
     console.error(err);
+
+    // 🔥 3. REVERT if failed
+    dispatch(updateWishlist(currentWishlist));
   }
 };
 
