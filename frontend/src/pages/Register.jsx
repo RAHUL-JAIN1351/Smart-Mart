@@ -35,9 +35,15 @@ const Register = () => {
 
       const firebaseToken = await result.user.getIdToken();
 
-      const res = await axios.post("/api/auth/google", {
-        token: firebaseToken
-      });
+      // const res = await axios.post("/api/auth/google", {
+      //   token: firebaseToken
+      // });
+
+      const API_URL = import.meta.env.VITE_API_URL;
+
+const res = await axios.post(`${API_URL}/api/auth/google`, {
+  token: firebaseToken
+});
 
       localStorage.setItem("token", res.data.token);
 
