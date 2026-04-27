@@ -175,17 +175,3 @@
   font-size:12px;
   padding:4px 10px;
 }
-
-
-
-.product-card-img-wrap img {
-  aspect-ratio: 3 / 2; /* matches 300x200 */
-}
-
-/* Skeleton Card Placeholder */
-.skeleton-card {
-  min-height: 320px; /* match product-card total height */
-  aspect-ratio: 3 / 4; /* consistent ratio with product-card layout */
-  display: flex;
-  flex-direction: column;
-}
